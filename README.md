@@ -1,2 +1,0 @@
-# BeersFactory
-BeersFactory
