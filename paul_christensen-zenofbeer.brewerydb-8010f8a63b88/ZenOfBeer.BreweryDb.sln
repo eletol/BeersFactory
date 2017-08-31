@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{6E5D7635-7106-42DF-9C46-C6566C429CA2}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZenOfBeer.BreweryDb.Pcl", "ZenOfBeer.BreweryDb.Pcl\ZenOfBeer.BreweryDb.Pcl.csproj", "{05A10547-494B-4499-A4BE-F4E4BBBA77D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZenOfBeer.BreweryDb.Pcl.Tests", "ZenOfBeer.BreweryDb.Pcl.Tests\ZenOfBeer.BreweryDb.Pcl.Tests.csproj", "{E8879C13-A6A1-4B5C-B0BC-72E2E3AD2799}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{7B12AA85-964F-4368-89AF-CB7072ED42C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05A10547-494B-4499-A4BE-F4E4BBBA77D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05A10547-494B-4499-A4BE-F4E4BBBA77D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05A10547-494B-4499-A4BE-F4E4BBBA77D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05A10547-494B-4499-A4BE-F4E4BBBA77D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8879C13-A6A1-4B5C-B0BC-72E2E3AD2799}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8879C13-A6A1-4B5C-B0BC-72E2E3AD2799}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8879C13-A6A1-4B5C-B0BC-72E2E3AD2799}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8879C13-A6A1-4B5C-B0BC-72E2E3AD2799}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B12AA85-964F-4368-89AF-CB7072ED42C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B12AA85-964F-4368-89AF-CB7072ED42C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B12AA85-964F-4368-89AF-CB7072ED42C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B12AA85-964F-4368-89AF-CB7072ED42C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
