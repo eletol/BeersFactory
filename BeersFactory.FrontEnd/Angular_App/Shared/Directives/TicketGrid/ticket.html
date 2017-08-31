@@ -1,0 +1,247 @@
+
+
+<div>
+    <div>
+        <!-- article -->
+          
+            <div class="table-head clearfix">
+                <ul class="filter-msg col-xs-12 row" filters-directive basic-applied-filters="appliedFilters.BasicFilters"
+                    range-applied-filters="appliedFilters.RangeFilters" basic-filters="pagingInfo.filters.BasicFilters"
+                    range-filters="pagingInfo.filters.RangeFilters" refresh-item="search()"></ul>
+                <ul class="summary clearfix pull-right">
+                    <li class="pull-left"><span>Total Number of Tickets</span><br /><strong>{{pagingInfo.totalItems}}</strong></li>
+                    <li class="pull-left"><span>Closed Tickets</span><br /><strong>{{pagingInfo.ClosedCount}}</strong></li>
+                    <li class="pull-left"><span>Pending Tickets</span><br /><strong>{{pagingInfo.PendingCount}}</strong></li>
+                    <li class="pull-left"><span>Canceled</span><br /><strong>{{pagingInfo.CanceledCount}}</strong></li>
+                </ul>
+                <ul class="table-controls pull-left clearfix">
+
+                    <li class="pull-left">
+                        Sort by:
+                        <select ng-model="pagingInfo.sortBy" ng-change="search()">
+                            <option value="ChannelName">Channel Name</option>
+                            <option value="TicketId">Ticket Id </option>
+                            <option value="OwnerName">Owner Name</option>
+                            <option value="CreationDateTime">Creation Date</option>
+                            <option value="LastUpdate">Last Update</option>
+                            <!--<option value="TotalTransactions">Total Transactions</option>
+                        <option value="TotalBranches">Total Branches</option>-->
+                        </select>
+                    </li>
+                    <li class="pull-left clearfix">
+                        <select ng-model="pagingInfo.reverse" ng-change="search()">
+                            <option value="false">Ascending</option>
+                            <option value="true">Descending</option>
+                        </select>
+                    </li>
+                </ul>
+            </div>
+            <section class="article-table-cont" nice-scroll>
+                <table class="table article-table sortable-table table-responsive">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th class="clearfix" ng-class="{'selected': formatCell(1,'TicketId')}">
+                                ID<i class="fa" ng-class="{'fa-caret-up': IsSortedAscending('TicketId'),
+                                                'fa-caret-down': !IsSortedAscending('TicketId'),
+                                                'filtered': pagingInfo.filters.BasicFilters[0].Value !== null}"></i>
+                                <form class="table-head-filter small-box-shadow" ng-reset refresh-item="search()" ng-submit="search()"
+                                      role="form">
+                                    <p>
+                                        <input type="number" ng-model="pagingInfo.filters.BasicFilters[0].item"
+                                               ng-change="updateLabel(pagingInfo.filters.BasicFilters[0],pagingInfo.filters.BasicFilters[0].item,
+                                                pagingInfo.filters.BasicFilters[0].item)" placeholder="ID" />
+                                    </p>
+                                    <p class="btns">
+                                        <input class="btn" type="submit" value="Apply" />
+                                        <input class="btn" type="reset" />
+                                    </p>
+                                </form>
+                            </th>
+                            <th class="clearfix" ng-class="{'selected': formatCell(2,'CustomerId')}">
+                                Customer Id<i class="fa" ng-class="{'fa-caret-up': IsSortedAscending('CustomerId'),
+                                                    'fa-caret-down': !IsSortedAscending('CustomerId'),
+                                                    'filtered': pagingInfo.filters.BasicFilters[1].Value !== null}"></i>
+                                <form class="table-head-filter small-box-shadow" ng-reset refresh-item="search()" ng-submit="search()"
+                                      role="form">
+                                    <p>
+                                        <input type="text" ng-model="pagingInfo.filters.BasicFilters[1].item"
+                                               ng-change="updateLabel(pagingInfo.filters.BasicFilters[1],pagingInfo.filters.BasicFilters[1].item,
+                                                pagingInfo.filters.BasicFilters[1].item)" placeholder="Customer Id" />
+                                    </p>
+                                    <p class="btns">
+                                        <input class="btn" type="submit" value="Apply" />
+                                        <input class="btn" type="reset" />
+                                    </p>
+                                </form>
+                            </th>
+                            <th class="clearfix" ng-class="{'selected': formatCell(3,'ChannelName')}">
+                                Channel<i class="fa" ng-class="{'fa-caret-up': IsSortedAscending('ChannelName'),
+                                                    'fa-caret-down': !IsSortedAscending('ChannelName'),
+                                                    'filtered': pagingInfo.filters.BasicFilters[2].Value !== null}"></i>
+                                <form class="table-head-filter small-box-shadow" ng-reset refresh-item="search()" ng-submit="search()"
+                                      role="form">
+                                    <p>
+                                        <select ng-model="pagingInfo.filters.BasicFilters[2].item" class="input-medium"
+                                                ng-change="updateLabel(pagingInfo.filters.BasicFilters[2],pagingInfo.filters.BasicFilters[2].item.Name,
+                                                pagingInfo.filters.BasicFilters[2].item.Name)"
+                                                ng-options="item as item.Name for item in lookUp.channels"></select>
+                                    </p>
+                                    <p class="btns">
+                                        <input class="btn" type="submit" value="Apply" />
+                                        <input class="btn" type="reset" />
+                                    </p>
+                                </form>
+                            </th>
+                            <th class="clearfix" ng-class="{'selected': formatCell(4,'OwnerName')}">
+                                Owner<i class="fa" ng-class="{'fa-caret-up': IsSortedAscending('OwnerName'),
+                                                    'fa-caret-down': !IsSortedAscending('OwnerName'),
+                                                    'filtered': pagingInfo.filters.BasicFilters[3].Value !== null}"></i>
+                                <form class="table-head-filter small-box-shadow" ng-reset refresh-item="search()" ng-submit="search()"
+                                      role="form">
+                                    <p>
+                                        <input type="text" ng-model="pagingInfo.filters.BasicFilters[3].item"
+                                               ng-change="updateLabel(pagingInfo.filters.BasicFilters[3],pagingInfo.filters.BasicFilters[3].item,
+                                                pagingInfo.filters.BasicFilters[3].item)" placeholder="Owner" />
+                                    </p>
+                                    <p class="btns">
+                                        <input class="btn" type="submit" value="Apply" />
+                                        <input class="btn" type="reset" />
+                                    </p>
+                                </form>
+                            </th>
+                            <th class="clearfix" ng-class="{'selected': formatCell(5,'ServiceName')}">
+                                Service<i class="fa" ng-class="{'fa-caret-up': IsSortedAscending('ServiceName'),
+                                                    'fa-caret-down': !IsSortedAscending('ServiceName'),
+                                                    'filtered': pagingInfo.filters.BasicFilters[4].Value !== null}"></i>
+                                <form class="table-head-filter small-box-shadow" ng-reset refresh-item="search()" ng-submit="search()"
+                                      role="form">
+                                    <p>
+                                        <select ng-model="pagingInfo.filters.BasicFilters[4].item" class="input-medium"
+                                                ng-change="updateLabel(pagingInfo.filters.BasicFilters[4],pagingInfo.filters.BasicFilters[4].item.Name,
+                                                pagingInfo.filters.BasicFilters[4].item.Name)"
+                                                ng-options="item as item.Name for item in services"></select>
+                                    </p>
+                                    <p class="btns">
+                                        <input class="btn" type="submit" value="Apply" />
+                                        <input class="btn" type="reset" />
+                                    </p>
+                                </form>
+                            </th>
+                            <th class="clearfix" ng-class="{'selected': formatCell(6,'LastUpdate')}">
+                                Last Update<i class="fa" ng-class="{'fa-caret-up': IsSortedAscending('LastUpdate'),
+                                                    'fa-caret-down': !IsSortedAscending('LastUpdate'),
+                                                    'filtered': pagingInfo.filters.RangeFilters[1].Value !== null}"></i>
+                                <form class="table-head-filter small-box-shadow" ng-reset refresh-item="search()" ng-submit="search()" role="form">
+                                    <p class="with-label">
+                                        <label for="">From</label>
+                                        <input ng-model="pagingInfo.filters.RangeFilters[1].ValueFrom" type="text" class="dateTimePicker" />
+                                    </p>
+                                    <p class="with-label">
+                                        <label for="">To</label>
+                                        <input type="text" ng-model="pagingInfo.filters.RangeFilters[1].ValueTo" class="dateTimePicker" />
+                                    </p>
+                                    <p class="btns">
+                                        <input class="btn" type="submit" value="Apply" />
+                                        <input class="btn" type="reset" />
+                                    </p>
+                                </form>
+                            </th>
+                            <th class="clearfix" ng-class="{'selected': formatCell(7,'TicketStatusName')}">
+                                Status<i class="fa" ng-class="{'fa-caret-up': IsSortedAscending('TicketStatusName'),
+                                                    'fa-caret-down': !IsSortedAscending('TicketStatusName'),
+                                                    'filtered': pagingInfo.filters.BasicFilters[5].Value !== null}"></i>
+                                <form class="table-head-filter small-box-shadow" ng-reset refresh-item="search()" ng-submit="search()"
+                                      role="form">
+                                    <p>
+                                        <select ng-model="pagingInfo.filters.BasicFilters[5].item" class="input-medium"
+                                                ng-change="updateLabel(pagingInfo.filters.BasicFilters[5],pagingInfo.filters.BasicFilters[5].item.Name,
+                                                pagingInfo.filters.BasicFilters[5].item.Name)"
+                                                ng-options="item as item.Name for item in lookUp.ticketStatuses"></select>
+                                    </p>
+                                    <p class="btns">
+                                        <input class="btn" type="submit" value="Apply" />
+                                        <input class="btn" type="reset" />
+                                    </p>
+                                </form>
+                            </th>
+                            <th class="clearfix" ng-class="{'selected': formatCell(8,'CreationDateTime')}">
+                                Creation Date<i class="fa" ng-class="{'fa-caret-up': IsSortedAscending('CreationDateTime'),
+                                                    'fa-caret-down': !IsSortedAscending('CreationDateTime'),
+                                                    'filtered': pagingInfo.filters.RangFilters[0].Value !== null}"></i>
+                                <form class="table-head-filter small-box-shadow" ng-reset refresh-item="search()" ng-submit="search()" role="form">
+                                    <p class="with-label">
+                                        <label for="">From</label>
+                                        <input ng-model="pagingInfo.filters.RangeFilters[0].ValueFrom" type="text" class="dateTimePicker" />
+                                    </p>
+                                    <p class="with-label">
+                                        <label for="">To</label>
+                                        <input type="text" ng-model="pagingInfo.filters.RangeFilters[0].ValueTo" class="dateTimePicker" />
+                                    </p>
+                                    <p class="btns">
+                                        <input class="btn" type="submit" value="Apply" />
+                                        <input class="btn" type="reset" />
+                                    </p>
+                                </form>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in items" ng-include="getTemplate(item)"
+                            style="cursor: pointer;"></tr>
+
+                        <tr data-ng-hide="items.length != 0">
+
+                            <td class="single-content-msg" colspan="10">
+                                <h3>No Requests available</h3>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-center">
+                    <pagination page="pagingInfo.page"
+                                ng-model="pagingInfo.currentPage"
+                                total-items="pagingInfo.totalItems"
+                                items-per-page="pagingInfo.itemsPerPage"
+                                ng-change="selectPage(pagingInfo.currentPage)"
+                                max-size="10"
+                                rotate="false"
+                                boundary-links="true">
+                    </pagination>
+                </div>
+
+            </section>
+
+        <!-- end-of article -->
+    <script type="text/ng-template" id="displayTicket">
+            <td class="pop-up-btn"><i class="fa fa-plus" ng-click="clickToOpen(item)"></i></td>
+            <td>{{ item.TicketId }}</td>
+            <td>
+                {{ item.CustomerId}}
+            </td>
+            <td>
+                {{ item.ChannelName }}
+            </td>
+            <td>
+                {{ item.OwnerName }}
+            </td>
+
+            <td>
+                {{ item.ServiceName }}
+            </td>
+            <td>
+                {{ item.LastUpdate }}
+            </td>
+            <td>
+                {{ item.TicketStatusName }}
+            </td>
+            <td>
+                {{ item.CreationDateTime }}
+            </td>
+          
+        </script>
+    </div>
+
+
+</div>
+
