@@ -10,7 +10,7 @@ namespace DAL.Repository.Interfaces
 {
     public interface IBaseRepository<TEntity> where TEntity : class
     {
-        Task<IResultsContainer<T>> GetData<T>( params KeyValuePair<string, string>[] parameters)
+        Task<IResultsContainer<T>> GetData<T>(params KeyValuePair<string, string>[] parameters)
             where T : IBdoBase;
         IQueryable<TEntity> Get(
         Expression<Func<TEntity, bool>> filter = null,

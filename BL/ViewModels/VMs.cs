@@ -15,7 +15,7 @@ namespace BL.ViewModels
         public string Page { get; set; }
         public string Sort { get; set; }
         public string Order { get; set; }
-        public  List<KeyValuePair<string, string>> filters { get; set; }
+        public  List<KeyValuePair<string, string>> filters { get; set; }=new List<KeyValuePair<string, string>>();
 
     }
     public class BaseBeers

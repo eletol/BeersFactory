@@ -58,7 +58,7 @@ namespace ZenOfBeer.BreweryDb.Pcl.Builders
 
             foreach (var parameter in parameters)
             {
-                if (parameter.Value.Length!=0)
+                if (parameter.Value?.Length!=0)
                 {
                     stringBuilder.Append(string.Concat("&", parameter.Key, "=", parameter.Value));
 

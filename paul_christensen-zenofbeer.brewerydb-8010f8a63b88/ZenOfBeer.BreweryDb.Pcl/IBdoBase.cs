@@ -6,7 +6,7 @@ namespace ZenOfBeer.BreweryDb.Pcl
 {
     public interface IBdoBase
     {
-        string Id { get; }
+        string Id { get; set; }
         string Name { get; }
         string Description { get; }
     }

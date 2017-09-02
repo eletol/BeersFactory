@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{7001
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL\DAL.csproj", "{8D6D01BF-60B5-427B-8571-8BECCDD51AC8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeersFactory.BackEnd.UnitTests", "BeersFactory.BackEnd.UnitTests\BeersFactory.BackEnd.UnitTests.csproj", "{3F5A908D-705A-45EC-B247-9FFB0A849AF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,10 @@ Global
 		{8D6D01BF-60B5-427B-8571-8BECCDD51AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D6D01BF-60B5-427B-8571-8BECCDD51AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D6D01BF-60B5-427B-8571-8BECCDD51AC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F5A908D-705A-45EC-B247-9FFB0A849AF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F5A908D-705A-45EC-B247-9FFB0A849AF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F5A908D-705A-45EC-B247-9FFB0A849AF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F5A908D-705A-45EC-B247-9FFB0A849AF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

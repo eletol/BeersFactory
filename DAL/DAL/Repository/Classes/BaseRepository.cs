@@ -23,7 +23,7 @@ namespace DAL.Repository.Classes
             _context = context;
 
         }
-        public async Task<IResultsContainer<T>> GetData<T>( params KeyValuePair<string, string>[] parameters) where T: IBdoBase
+        public virtual async Task<IResultsContainer<T>> GetData<T>( params KeyValuePair<string, string>[] parameters) where T: IBdoBase
         {
             var data = await BreweryDbFactory<T>.GetData("aa71e032ef369a484e0b39485e9e8d2b", parameters);
             return data;

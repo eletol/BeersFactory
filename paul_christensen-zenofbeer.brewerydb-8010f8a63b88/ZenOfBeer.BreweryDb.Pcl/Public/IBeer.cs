@@ -6,6 +6,7 @@ namespace ZenOfBeer.BreweryDb.Pcl.Public
 {
     public interface IBeer : IBdoBase
     {
+        
         /// <summary>
         /// A free text field containing any food pairing information for the beer
         /// </summary>
