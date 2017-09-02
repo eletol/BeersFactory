@@ -33,14 +33,19 @@ namespace BeersFactory.BackEnd.UnitTests
         }
       
         [TestMethod]
-        public void TestMethod1()
+        public void GetByFilter_ShouldReturnAllBeers()
         {
-                var uow = _kernel.GetMock<IUnitOfWork>();
+            // Set up Prerequisites   
+
+            var uow = _kernel.GetMock<IUnitOfWork>();
                 uow.Setup(e => e.Repository<BeerDataObject, IBeerDataObjectRepository>()).Returns(new MockBeerDataObjectRepository(null));
                 var bm = _kernel.Get<IBeerDataObjectBussinessManger>();
                BeersController bc = new BeersController(bm);
-               var r =  bc.GetByFilter(new PagingInfo() {Order = "",Sort="",Page = "1"}).Result;
-                Assert.IsNotNull(r);
+
+            // Act  
+            var r =  bc.GetByFilter(new PagingInfo() {Order = "",Sort="",Page = "1"}).Result;
+            // Assert  
+            Assert.AreEqual(r.BeerDataObjectListVM.Count,1);
             
         }
     }
