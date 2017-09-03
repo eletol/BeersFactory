@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -13,9 +14,9 @@ using System.Data.Entity.Migrations;
 namespace DAL.Repository.Classes
 {
     public class BaseRepository<TItem> : IBaseRepository<TItem> where TItem : class, new()
-        
-    {
 
+    {
+        public static readonly string APIKey = ConfigurationManager.AppSettings["BreweryDb.APIKey"];
         private IDbContext _context { get; set; }
 
         public BaseRepository(IDbContext context)
@@ -23,9 +24,9 @@ namespace DAL.Repository.Classes
             _context = context;
 
         }
-        public virtual async Task<IResultsContainer<T>> GetData<T>( params KeyValuePair<string, string>[] parameters) where T: IBdoBase
+        public virtual async Task<IResultsContainer<T>> GetData<T>(params KeyValuePair<string, string>[] parameters) where T : IBdoBase
         {
-            var data = await BreweryDbFactory<T>.GetData("aa71e032ef369a484e0b39485e9e8d2b", parameters);
+            var data = await BreweryDbFactory<T>.GetData(APIKey, parameters);
             return data;
         }
         private DbSet<TItem> dbSet;
@@ -62,9 +63,9 @@ namespace DAL.Repository.Classes
             return query;
         }
 
-        public  virtual TItem GetByID(object id)
+        public virtual TItem GetByID(object id)
         {
-            return  dbSet.Find(id);
+            return dbSet.Find(id);
         }
 
         public TItem Insert(TItem entity)

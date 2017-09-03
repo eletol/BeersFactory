@@ -74,6 +74,21 @@ namespace BeersFactory.BackEnd.UnitTests
         
 
         }
+        [TestMethod]
+        public void GetById_ShouldGetBeerWithId()
+        {
+            // Set up Prerequisites   
+            var uow = _kernel.GetMock<IUnitOfWork>();
+            uow.Setup(e => e.Repository<BeerDataObject, IBeerDataObjectRepository>()).Returns(new MockBeerDataObjectRepository(null));
+            var bm = _kernel.Get<IBeerDataObjectBussinessManger>();
+            BeersController bc = new BeersController(bm);
+
+            // Act  
+            var r = bc.GetById("55").Result;
+            // Assert  
+            Assert.IsNotNull(r);
+
+        }
 
     }
 }

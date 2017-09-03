@@ -19,7 +19,7 @@ namespace DAL.Repository.Classes
 
         public async new Task<BeerDataObject> GetByID(object id)
         {
-            var data = await BreweryDbFactory<BeerDataObject>.GetData("aa71e032ef369a484e0b39485e9e8d2b",
+            var data = await BreweryDbFactory<BeerDataObject>.GetData(APIKey,
                        new KeyValuePair<string, string>("ids",id.ToString()));
             return data.FirstOrDefault();
         }
