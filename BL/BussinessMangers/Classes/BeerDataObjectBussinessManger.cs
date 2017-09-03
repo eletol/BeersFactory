@@ -36,11 +36,11 @@ namespace BL.BussinessMangers.Classes
         public async Task<BaseBeers> GetData(PagingInfo pInfo) 
         {
          
-            pInfo.filters.Add(new KeyValuePair<string, string>("order", pInfo.Order));
-             pInfo.filters.Add(new KeyValuePair<string, string>("sort", pInfo.Sort));
-             pInfo.filters.Add( new KeyValuePair<string, string>("p", pInfo.Page));
+            pInfo?.filters.Add(new KeyValuePair<string, string>("order", pInfo.Order));
+             pInfo?.filters.Add(new KeyValuePair<string, string>("sort", pInfo.Sort));
+             pInfo?.filters.Add( new KeyValuePair<string, string>("p", pInfo.Page));
 
-            var data = await GetData<IBeer>(pInfo.filters.ToArray());
+            var data = await GetData<IBeer>(pInfo?.filters.ToArray());
           
 
             var dest = Mapper.Map<IResultsContainer<IBeer>, List<BeerDataObjectListVM>>(data);

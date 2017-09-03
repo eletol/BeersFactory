@@ -26,8 +26,6 @@ namespace BeersFactory.BackEnd.UnitTests
         public TestBeersController()
         {
              _kernel = new MoqMockingKernel();
-            //_kernel.Bind<IDbContext>().To<MyDbContext>().InRequestScope();
-            //_kernel.Bind<IUnitOfWork>().To<UnitOfWork<MyDbContext>>().InRequestScope();
             _kernel.Bind<IBeerDataObjectBussinessManger>().To<BeerDataObjectBussinessManger<IBeerDataObjectRepository>>();
 
         }
@@ -36,7 +34,6 @@ namespace BeersFactory.BackEnd.UnitTests
         public void GetByFilter_ShouldReturnAllBeers()
         {
             // Set up Prerequisites   
-
             var uow = _kernel.GetMock<IUnitOfWork>();
                 uow.Setup(e => e.Repository<BeerDataObject, IBeerDataObjectRepository>()).Returns(new MockBeerDataObjectRepository(null));
                 var bm = _kernel.Get<IBeerDataObjectBussinessManger>();
@@ -48,5 +45,35 @@ namespace BeersFactory.BackEnd.UnitTests
             Assert.AreEqual(r.BeerDataObjectListVM.Count,1);
             
         }
+        [TestMethod]
+        public void GetByFilter_ShouldHandleNullPagingInfo()
+        {
+            // Set up Prerequisites   
+
+            var uow = _kernel.GetMock<IUnitOfWork>();
+            uow.Setup(e => e.Repository<BeerDataObject, IBeerDataObjectRepository>()).Returns(new MockBeerDataObjectRepository(null));
+            var bm = _kernel.Get<IBeerDataObjectBussinessManger>();
+            BeersController bc = new BeersController(bm);
+            try
+            {
+                // Act  
+
+                var r = bc.GetByFilter(null).Result;
+                // Assert  
+                Assert.IsNotNull(r);
+                
+            }
+            catch (Exception)
+            {
+
+                throw new AssertFailedException(
+                                 String.Format("null pointer exception not handeled")
+                                 );
+            }
+         
+        
+
+        }
+
     }
 }
